@@ -1,0 +1,1 @@
+console.log('Global Prayer Live starter loaded');
