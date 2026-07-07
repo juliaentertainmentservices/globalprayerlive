@@ -1,2 +1,1 @@
-# Global Prayer Live
-Starter project.
+# Global Prayer Live v0.1

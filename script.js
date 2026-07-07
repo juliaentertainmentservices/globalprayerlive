@@ -1,1 +1,1 @@
-console.log('Global Prayer Live starter loaded');
+function tick(){const d=new Date();clock.textContent=d.toLocaleTimeString()}setInterval(tick,1000);tick();
