@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>World Prayer Live — 24/7 Broadcast</title>
+<meta name="viewport" content="width=1920, initial-scale=1">
+<meta name="description" content="World Prayer Live — 24/7 prayer times broadcast, Phase 1 prototype.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="stage" id="stage">
+
+  <!-- Background skyline art (original, not a copied photo) -->
+  <div class="bg">
+    <svg class="skyline" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1a1035"/>
+          <stop offset="45%" stop-color="#3a2350"/>
+          <stop offset="72%" stop-color="#8a4a5c"/>
+          <stop offset="100%" stop-color="#e8956a"/>
+        </linearGradient>
+        <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ffe9b0" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#ffe9b0" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <rect x="0" y="0" width="1920" height="1080" fill="url(#sky)"/>
+      <circle cx="960" cy="620" r="260" fill="url(#sun)"/>
+      <g id="skylineGroup" fill="#100a1c" fill-opacity="0.92"></g>
+      <rect x="0" y="900" width="1920" height="180" fill="#0a0714"/>
+    </svg>
+    <div class="vignette"></div>
+  </div>
+
+  <!-- Top bar -->
+  <header class="topbar">
+    <div class="brand-block">
+      <span class="live-badge"><span class="dot"></span>LIVE</span>
+      <div class="brand-text">
+        <div class="brand-name">WORLD PRAYER TIMES</div>
+        <div class="brand-sub">AROUND THE WORLD</div>
+      </div>
+    </div>
+
+    <div class="location-block">
+      <div class="location-city"><span class="pin">📍</span><span id="cityName">Istanbul</span>, <span id="countryShort">Turkey</span></div>
+      <div class="location-country"><span id="flag">🇹🇷</span><span id="countryName">TURKEY</span></div>
+    </div>
+
+    <div class="hijri-block">
+      <div class="hijri-date" id="hijriDate">— ——— 1447</div>
+      <div class="gregorian-date" id="gregorianDate">—</div>
+      <span class="moon">☾</span>
+    </div>
+  </header>
+
+  <!-- Left panel: prayer times + countdown -->
+  <aside class="left-panel">
+    <div class="panel-card">
+      <div class="panel-title">TODAY'S PRAYER TIMES</div>
+      <ul class="prayer-list" id="prayerList"></ul>
+    </div>
+    <div class="panel-card next-card">
+      <div class="next-label">NEXT PRAYER</div>
+      <div class="next-name" id="nextPrayerName">Isha</div>
+      <div class="next-caption">STARTS IN</div>
+      <div class="next-countdown" id="countdownTimer">00:00:00</div>
+    </div>
+  </aside>
+
+  <!-- Right panel: Quran verse + Hadith, rotating -->
+  <aside class="right-panel">
+    <div class="panel-card verse-card">
+      <div class="panel-title">QURAN VERSE</div>
+      <div class="verse-arabic" id="verseArabic">—</div>
+      <div class="verse-divider">۞</div>
+      <div class="verse-translation" id="verseTranslation">—</div>
+      <div class="verse-source" id="verseSource">—</div>
+    </div>
+    <div class="panel-card hadith-card">
+      <div class="panel-title">HADITH</div>
+      <div class="hadith-text" id="hadithText">—</div>
+      <div class="hadith-source" id="hadithSource">—</div>
+    </div>
+  </aside>
+
+  <!-- Bottom info strip -->
+  <div class="info-strip">
+    <div class="info-item"><span class="info-icon">🕐</span><span class="info-text"><span class="info-label">TIME</span><span class="info-value" id="clock">00:00:00 PM</span></span></div>
+    <div class="info-item"><span class="info-icon">🌐</span><span class="info-text"><span class="info-label">TIMEZONE</span><span class="info-value" id="gmtOffset">GMT +0</span></span></div>
+    <div class="info-item"><span class="info-icon">☁️</span><span class="info-text"><span class="info-label">WEATHER</span><span class="info-value" id="weather">— · —</span></span></div>
+    <div class="info-item"><span class="info-icon">🏳️</span><span class="info-text"><span class="info-label">COUNTRY</span><span class="info-value" id="countryFull">—</span></span></div>
+    <div class="info-item"><span class="info-icon">👥</span><span class="info-text"><span class="info-label">POPULATION</span><span class="info-value" id="population">—</span></span></div>
+  </div>
+
+  <!-- Bottom scrolling city ticker -->
+  <div class="ticker-wrap">
+    <div class="ticker-track" id="tickerTrack"></div>
+  </div>
+
+  <!-- Fallback scene, shown only if data fails to load -->
+  <div class="fallback" id="fallback">
+    <div class="fallback-inner">
+      <div class="moon" style="font-size:64px;">☾</div>
+      <h2>World Prayer Live</h2>
+      <p>Broadcast returning shortly.</p>
+    </div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
